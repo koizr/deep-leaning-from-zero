@@ -10,8 +10,7 @@ def AND(x1, x2):
     w = np.array([0.5, 0.5])
     b = -0.7
 
-    weighted_biased = np.sum(x * w) + b
-    return 1 if weighted_biased > 0 else 0
+    return activate(b, w, x)
 
 
 def OR(x1, x2):
@@ -19,8 +18,7 @@ def OR(x1, x2):
     w = np.array([0.5, 0.5])
     b = -0.4
 
-    weighted_biased = np.sum(x * w) + b
-    return 1 if weighted_biased > 0 else 0
+    return activate(b, w, x)
 
 
 def NAND(x1, x2):
@@ -28,8 +26,7 @@ def NAND(x1, x2):
     w = np.array([-0.5, -0.5])
     b = 0.7
 
-    weighted_biased = np.sum(x * w) + b
-    return 1 if weighted_biased > 0 else 0
+    return activate(b, w, x)
 
 
 def XOR(x1, x2):
@@ -41,6 +38,24 @@ def XOR(x1, x2):
     s1 = NAND(x1, x2)
     s2 = OR(x1, x2)
     return AND(s1, s2)
+
+
+def activate(b, w, x):
+    """
+    活性化関数
+    受け取った値によって出力を発火させる
+    """
+
+    weighted_biased = np.sum(x * w) + b
+    return step(weighted_biased)
+
+
+def step(x):
+    """
+    ステップ関数
+    活性化関数の実装のうちのひとつ
+    """
+    return 1 if x > 0 else 0
 
 
 def assert_equal(actual, expected):
