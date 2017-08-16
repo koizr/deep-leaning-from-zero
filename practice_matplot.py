@@ -17,7 +17,15 @@ if __name__ == '__main__':
     y2 = np.cos(x)
 
     pl.plot(x, y1, label='sin')
-    pl.plot(x, y2, label='cos', linestyle='dashed')
+    pl.plot(x, y2, label='cos', linestyle='--')
+    """
+    linestyle の種類
+
+    -  -> solid
+    -- -> dashed
+    -. -> dash-dot
+    :  -> dotted
+    """
     pl.xlabel('x')  # x軸のラベル
     pl.ylabel('y')  # y軸のラベル
     pl.title('sin & cos')  # 表のタイトル
