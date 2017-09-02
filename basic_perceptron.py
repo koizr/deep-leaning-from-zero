@@ -3,6 +3,7 @@
 """
 
 import numpy as np
+import assertion
 
 
 def AND(x1, x2):
@@ -58,32 +59,27 @@ def step(x):
     return 1 if x > 0 else 0
 
 
-def assert_equal(actual, expected):
-    result = 'success' if actual == expected else 'failed'
-    print(f"{result}: {actual} = {expected}")
-
-
 if __name__ == '__main__':
     print("AND")
-    assert_equal(AND(0, 0), 0)
-    assert_equal(AND(1, 0), 0)
-    assert_equal(AND(0, 1), 0)
-    assert_equal(AND(1, 1), 1)
+    assertion.equal(AND(0, 0), 0)
+    assertion.equal(AND(1, 0), 0)
+    assertion.equal(AND(0, 1), 0)
+    assertion.equal(AND(1, 1), 1)
 
     print("OR")
-    assert_equal(OR(0, 0), 0)
-    assert_equal(OR(1, 0), 1)
-    assert_equal(OR(0, 1), 1)
-    assert_equal(OR(1, 1), 1)
+    assertion.equal(OR(0, 0), 0)
+    assertion.equal(OR(1, 0), 1)
+    assertion.equal(OR(0, 1), 1)
+    assertion.equal(OR(1, 1), 1)
 
     print("NAND")
-    assert_equal(NAND(0, 0), 1)
-    assert_equal(NAND(1, 0), 1)
-    assert_equal(NAND(0, 1), 1)
-    assert_equal(NAND(1, 1), 0)
+    assertion.equal(NAND(0, 0), 1)
+    assertion.equal(NAND(1, 0), 1)
+    assertion.equal(NAND(0, 1), 1)
+    assertion.equal(NAND(1, 1), 0)
 
     print("XOR")
-    assert_equal(XOR(0, 0), 0)
-    assert_equal(XOR(1, 0), 1)
-    assert_equal(XOR(0, 1), 1)
-    assert_equal(XOR(1, 1), 0)
+    assertion.equal(XOR(0, 0), 0)
+    assertion.equal(XOR(1, 0), 1)
+    assertion.equal(XOR(0, 1), 1)
+    assertion.equal(XOR(1, 1), 0)
