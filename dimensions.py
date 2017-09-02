@@ -35,14 +35,14 @@ if __name__ == '__main__':
     # num_of_dimensions(np.array([1, 2, 3]))
 
     # 2次元（行列）
-    ## 内積（ドット積）
+    # 内積（ドット積）
     A = np.array([[1, 2, 3], [4, 5, 6]])
     B = np.array([[1, 2], [3, 4], [5, 6]])
     print(A.shape)
     print(B.shape)
     print(np.dot(A, B))
 
-    ## 列数と行数があっていれば１次元でも積を求めることが可能
+    # 列数と行数があっていれば１次元でも積を求めることが可能
     A = np.array([[1, 2], [3, 4], [5, 6]])
     B = np.array([1, 2])
     print(np.dot(A, B))

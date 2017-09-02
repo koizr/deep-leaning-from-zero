@@ -16,8 +16,8 @@ if __name__ == "__main__":
     # 多次元配列を扱うことも可能
     d = np.array([[1, 2], [3, 4]])
     print(d)
-    print(d.shape) # 行列の形状を表示する
-    print(d.dtype) # 値の種類を表示する
+    print(d.shape)  # 行列の形状を表示する
+    print(d.dtype)  # 値の種類を表示する
 
     # 行列でも1次元の場合と同じように計算できる
     # .shape の結果が異なっていたらエラー
