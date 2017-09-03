@@ -5,7 +5,6 @@
 import numpy as np
 from typing import TypeVar
 
-
 Numbers = TypeVar('Numbers', int, float, np.ndarray)
 
 
@@ -44,7 +43,7 @@ def identity(x: Numbers) -> Numbers:
     return x
 
 
-def main():
+def _main():
     import matplotlib.pyplot as pl
 
     x = np.arange(-5, 5, 0.1)
@@ -58,4 +57,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    _main()
