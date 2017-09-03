@@ -3,6 +3,7 @@
 """
 
 import numpy as np
+import assertion
 from typing import TypeVar
 
 Numbers = TypeVar('Numbers', int, float, np.ndarray)
@@ -39,8 +40,24 @@ def identity(x: Numbers) -> Numbers:
     恒等関数
 
     入力をそのまま出力する
+    主に出力層で使用される
     """
     return x
+
+
+def soft_max(x: np.ndarray) -> np.ndarray:
+    """
+    ソフトマックス関数
+
+    複数ある出力層のうち、 いずれかひとつの出力層の出力を取得する
+    戻り値の合計は必ず 1 になる特徴をもつ
+    主に出力層で使用される
+    """
+    # exp は指数関数のため容易に大きな数値となりうる
+    # オーバーフロー対策として引数のうち最大値を引いておく
+    # これによる影響は出ない
+    exp_x = np.exp(x - np.max(x))
+    return exp_x / np.sum(exp_x)
 
 
 def _main():
@@ -56,5 +73,18 @@ def _main():
     pl.show()
 
 
+def _test_identify():
+    x = 1.0
+    assertion.equal(identity(x), x)
+
+
+def _test_soft_max():
+    yk = soft_max(np.array([100, 60, 1000]))
+    assertion.equal(np.sum(yk), 1.0)
+
+
 if __name__ == '__main__':
     _main()
+    # TODO テストを切り出したい
+    _test_identify()
+    _test_soft_max()
